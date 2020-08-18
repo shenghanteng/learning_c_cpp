@@ -1,2 +1,2 @@
-# learning_c_cpp
+# Learning C/C++
 Data structure in C/C++
