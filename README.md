@@ -6,8 +6,8 @@
 - [Data types & memory size](#Data-types--memory-size)
 - [Strings & special characters](#Strings--special-characters)
 - [Array](#Array)
-- [Data structure & algorithms](#Data-structures--algorithms)
 - [Conditional statements](#Conditional-statements)
+- [Data structure & algorithms](#Data-structures--algorithms)
 - [Libraries](#Libraries)
 - [Resources](#Resources)
 - [References](#References)
@@ -217,51 +217,6 @@
         ary = NULL;
         ```
 
-## Data structures & algorithms
-- Types of data structures
-    - Linked list
-        - Singly linked list
-            ```c
-            #include <stdlib.h>
-
-            typedef struct _node
-            {
-                TYPE VARIABLE;
-                struct _node *next;
-            } node;
-
-            int main()
-            {
-               node *head;
-               head = (node *)malloc(sizeof(node));
-               head->next = (node *)malloc(sizeof(node));
-               head->next->next = NULL;
-            }
-            ```
-        - Doubly linked list
-        - Circular linked list
-    - Stack (Last-In-First-Out, LIFO)
-    - Queue (First-In-First-Out, FIFO)
-    - Tree
-        - Binary tree
-        - Binary search tree
-        - Self-balancing binary search tree
-        - Adelson-Velsky-Landis tree
-        - Red–black tree
-    - Graph
-- Algorithms
-    - Insert
-    - Delete
-    - Search
-        - Linear search
-        - Binary search
-    - Sort
-        - Bubble sort
-        - Quick sort
-        - Selection sort
-        - Insertion sort
-    - Recursion
-
 ## Conditional statements
 - If-else
     ```c
@@ -330,6 +285,51 @@
     - `||`: OR
     - `!`: NOT
 
+## Data structures & algorithms
+- Types of data structures
+    - Linked list
+        - Singly linked list
+            ```c
+            #include <stdlib.h>
+
+            typedef struct _node
+            {
+                TYPE VARIABLE;
+                struct _node *next;
+            } node;
+
+            int main()
+            {
+               node *head;
+               head = (node *)malloc(sizeof(node));
+               head->next = (node *)malloc(sizeof(node));
+               head->next->next = NULL;
+            }
+            ```
+        - Doubly linked list
+        - Circular linked list
+    - Stack (Last-In-First-Out, LIFO)
+    - Queue (First-In-First-Out, FIFO)
+    - Tree
+        - Binary tree
+        - Binary search tree
+        - Self-balancing binary search tree
+        - Adelson-Velsky-Landis tree
+        - Red–black tree
+    - Graph
+- Algorithms
+    - Insert
+    - Delete
+    - Search
+        - Linear search
+        - Binary search
+    - Sort
+        - Bubble sort
+        - Quick sort
+        - Selection sort
+        - Insertion sort
+    - Recursion
+
 ## Libraries
 - `<unistd.h>`
     - `write(FILE_DESCRIPTOR, BUFFER, COUNT);`
@@ -347,7 +347,7 @@
         - Returns the number of seconds (`long`) since January 1, 1970 at 00:00:00 UTC.
 - `<stdlib.h>`
     - `srand((unsigned)time(NULL));`
-        - Seed the random number generator
+        - Seeds the random number generator
     - `rand();`
         - Returns `int` from 0 to 32,767
     - `system("COMMAND");`
