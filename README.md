@@ -6,7 +6,7 @@
 - [Data types & memory size](#Data-types--memory-size)
 - [Strings & special characters](#Strings--special-characters)
 - [Array](#Array)
-- [Data structure & algorithms](#Data-structure--algorithms)
+- [Data structure & algorithms](#Data-structures--algorithms)
 - [Conditional statements](#Conditional-statements)
 - [Libraries](#Libraries)
 - [Resources](#Resources)
