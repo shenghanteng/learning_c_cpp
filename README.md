@@ -130,8 +130,6 @@
             - `STRUCT_VARIABLE.VARIABLE;`
         - Arrow operator (pointers)
             - `STRUCT_POINTER->VARIABLE;`
-
-## Strings & characters
 - Format specifiers
     - `int`: `printf("%d", 42);`
     - `char`: `printf("%c", 'A');`
@@ -140,16 +138,8 @@
     - `double` (for `scanf`): `scanf("%lf", &d);`
     - `long double`: `printf("%LF", 3.141592L);`
     - Pointer (address): `printf("%p", &ptr);`
-- Escape sequences
-    - `\'`, `\"`, `\\`: single/double quote, backslash
-    - `\0`: null character (end of string)
-    - `\n`: new line (Enter key)
-    - `\t`: tab space
-    - `\r`: carriage return (Windows line endings)
-    - `\b`: backspace (Erasing characters)
-    - `\f`: form feed (Page break)
-    - `\v`: vertical tab (Vertical spacing)
-    - `\a`: bell/beep sound (Alert user)
+
+## Strings & special characters
 - String literals vs. String variables
     - String literals
         - Declarations
@@ -162,6 +152,16 @@
             - `char str[] = "Hello";` (stack)
             - `char *str = malloc(10);` (heap)
         - Mutable
+- Escape sequences
+    - `\'`, `\"`, `\\`: single/double quote, backslash
+    - `\0`: null character (end of string)
+    - `\n`: new line (Enter key)
+    - `\t`: tab space
+    - `\r`: carriage return (Windows line endings)
+    - `\b`: backspace (Erasing characters)
+    - `\f`: form feed (Page break)
+    - `\v`: vertical tab (Vertical spacing)
+    - `\a`: bell/beep sound (Alert user)
 
 ## Array
 - Syntax
