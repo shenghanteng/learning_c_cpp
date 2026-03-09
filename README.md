@@ -1,5 +1,17 @@
 # Learning C/C++
 
+## Table of contents
+- [Program structure](#Program-structure)
+- [Compilation & execution](#Compilation--execution)
+- [Data types & memory size](#Data-types--memory-size)
+- [Strings & special characters](#Strings--special-characters)
+- [Array](#Array)
+- [Data structure & algorithms](#Data-structure--algorithms)
+- [Conditional statements](#Conditional-statements)
+- [Libraries](#Libraries)
+- [Resources](#Resources)
+- [References](#References)
+
 ## Program structure
 - Preprocessor directives & header files
     - Standard libraries
