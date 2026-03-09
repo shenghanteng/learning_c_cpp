@@ -23,7 +23,7 @@
     - `int main(int argc, char **argv){...;}`
         - Returns an integer, takes command-line arguments
 - Function definitions
-    ```=c
+    ```c
     RETURN_TYPE FUNCTION_NAME(PARAMETERS, ...)
     {
         ...;
@@ -34,7 +34,7 @@
     - `// single-line comments`
     - `/* multi-line comments */`
 - Example
-    ```=c
+    ```c
     /* This is a C program that
     prints "Hello World!" 
     to the screen. */
@@ -177,18 +177,18 @@
     - `int ary[3] = {0};` (`{0, 0, 0}`)
     - `char *string = "Hello";` (`{'H', 'e', 'l', 'l', 'o', '\0'}`)
 - 2D arrays
-    ```=c
+    ```c
     int matrix[2][3] = {{1, 2, 3}, {4, 5, 6}};
     matrix[0][2]; // 3
     ```
 - Multidimensional arrays
-    ```=c
+    ```c
     int cube[x][y][z] = {{{...}, ...}, ...};
     cube[i][j][k]; // *(cube + i*y*z + j*z + k)
     ```
 - Dynamic arrays
     - 1D arrays (using `malloc`)
-        ```=c
+        ```c
         #include <stdlib.h>
 
         int size;
@@ -209,7 +209,7 @@
 - Types of data structures
     - Linked list
         - Singly linked list
-            ```=c
+            ```c
             #include <stdlib.h>
 
             typedef struct _node
