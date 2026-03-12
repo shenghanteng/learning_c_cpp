@@ -184,20 +184,21 @@
     - Variable name represents address (pointer), but they are not the same
         - Array variable is not a modifiable `lvalue` (locator value).
     - Static (stack) vs. Dynamic (heap)
-- 1D arrays
-    - `int ary[5] = {1, 2, 3, 4, 5};`
-    - `int ary[3] = {0};` (`{0, 0, 0}`)
-    - `char *string = "Hello";` (`{'H', 'e', 'l', 'l', 'o', '\0'}`)
-- 2D arrays
-    ```c
-    int matrix[2][3] = {{1, 2, 3}, {4, 5, 6}};
-    matrix[0][2]; // 3
-    ```
-- Multidimensional arrays
-    ```c
-    int cube[x][y][z] = {{{...}, ...}, ...};
-    cube[i][j][k]; // *(cube + i*y*z + j*z + k)
-    ```
+- Static arrays
+    - 1D arrays
+        - `int ary[5] = {1, 2, 3, 4, 5};`
+        - `int ary[3] = {0};` (`{0, 0, 0}`)
+        - `char string[] = "Hello";` (`{'H', 'e', 'l', 'l', 'o', '\0'}`)
+    - 2D arrays
+        ```c
+        int matrix[2][3] = {{1, 2, 3}, {4, 5, 6}};
+        matrix[0][2]; // 3
+        ```
+    - Multidimensional arrays
+        ```c
+        int cube[x][y][z] = {{{...}, ...}, ...};
+        cube[i][j][k]; // *(cube + i*y*z + j*z + k)
+        ```
 - Dynamic arrays
     - 1D arrays (using `malloc`)
         ```c
@@ -216,6 +217,7 @@
         free(ary); // Remember to free!
         ary = NULL;
         ```
+    - Multidimensional arrays
 
 ## Conditional statements
 - If-else
@@ -308,11 +310,47 @@
             ```
         - Doubly linked list
         - Circular linked list
-    - Stack (Last-In-First-Out, LIFO)
-    - Queue (First-In-First-Out, FIFO)
+    - Stack
+        - LIFO: Last-In-First-Out
+        - Push & Pop
+    - Queue
+        - FIFO: First-In-First-Out
+        - Enqueue & Dequeue
     - Tree
         - Binary tree
+            ```c
+            #include <stdlib.h>
+
+            typedef struct _binary_tree_node
+            {
+                TYPE VARIABLE;
+                struct _binary_tree_node *left;
+                struct _binary_tree_node *right;
+            } node;
+
+            int main()
+            {
+                node *root;
+                            
+                root = (node *)malloc(sizeof(node));
+                // Level 1
+                root->left = NULL;
+                root->right = NULL;
+                
+                // Level 2
+                root->left = (node *)malloc(sizeof(node));
+                root->left->left = NULL;
+                root->left->right = NULL;
+                root->right = (node *)malloc(sizeof(node));
+                root->right->left = NULL;
+                root->right->right = NULL;
+            }
+            ```
+            - For a binary tree of height $h$, the maximum number of nodes is $2^h - 1$.
         - Binary search tree
+            - Each node has a distinct value.
+            - Left child node < Parent node
+            - Right child node > Parent node
         - Self-balancing binary search tree
         - Adelson-Velsky-Landis tree
         - Red–black tree
@@ -320,6 +358,10 @@
 - Algorithms
     - Insert
     - Delete
+    - Traverse
+        - Inorder traversal
+        - Preorder traversal
+        - Postorder traversal
     - Search
         - Linear search
         - Binary search
