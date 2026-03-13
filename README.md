@@ -8,6 +8,7 @@
 - [Array](#Array)
 - [Conditional statements](#Conditional-statements)
 - [Data structure & algorithms](#Data-structures--algorithms)
+- [C++ data structures](#C-data-structures)
 - [Libraries](#Libraries)
 - [Resources](#Resources)
 - [References](#References)
@@ -372,6 +373,200 @@
         - Insertion sort
     - Recursion
 
+## C++ data structures
+- Object-Oriented Programming (OOP)
+    - Encapsulation
+- Class
+    - Property
+        - Data members (attributes)
+    - Method
+        - Member functions (behaviors)
+    - Access specifiers
+        - `public:`
+            - Members can be seen outside the class.
+        - `protected:`
+            - Members can be seen inside the class and by child (derived) classes.
+        - `private:`
+            - Members can be seen only inside the class itself.
+    - Constructor
+        - Declaration: `Class_NAME();` (no return type)
+        - Automatically called upon object creation for initialization
+    - Destructor
+        - Declaration: `~Class_NAME();` (no arguments, no return type)
+        - Automatically called when an object goes out-of-scope or is deleted
+        - Used for cleanup (freeing memory, closing files)
+        - `virtual ~Class_NAME();` (to prevent memory leak)
+    - Friend
+        - `friend TYPE FUNCTION(TYPE VAR);`
+            - Friend functions have access to the class' members.
+        - `friend class CLASS;`
+            - All methods of the friend class have the access to the class' members.
+        - Not inheritable
+    - Inheritance
+        - `class Child : public Parent` (public memebers of Parent stay public in Child)
+        - `class Child : protected Parent` (public memebers of Parent becomes protected in Child)
+        - `class Child : private Parent` (All members of Parent become private in Child)
+        - `class Child : public Parent1, public Parent2` (multiple inheritance)
+    - Example
+        ```c
+        #include <iostream>
+        #include <string>
+        using namespace std; // to omit std::
+
+        class Particle
+        {
+            public:
+                Particle(int m){
+                    mass = m;
+                }
+
+                void print(){
+                    cout << "[Print] Mass: " << mass << endl;
+                }
+
+                ~Particle(){
+                    cout << "Bye (" << mass << ")" << endl;
+                }
+                int mass;
+                friend class Measure;
+                friend void show(Particle &P);
+            protected:
+                int e = 1;
+            private:
+                int s = 0;
+        };
+
+        void show(Particle &P)
+        {
+            cout << "[Show] Charge: " << P.e << ", Spin: " << P.s << endl;
+        }
+
+        class Measure
+        {
+            public:
+                void measure(Particle &P){
+                    cout << "[Measure] Charge: " << P.e << ", Spin: " << P.s << endl;
+                }
+        };
+
+        class Electron : public Particle
+        {
+            public:
+                Electron(int m) : Particle(m){
+                    e = -1;
+                }
+                
+                void show();
+
+                ~Electron(){
+                    cout << "Ciao (" << mass << ")" << endl;
+                }
+            private:
+                double s = 0.5;
+        };
+
+        // Member function of Electron class
+        void Electron::show(){
+            cout << "[Show] Charge: " << e << ", Spin: " << s << endl;
+        }
+
+        int main()
+        {
+            Particle P(10);
+            Electron E(2);
+            Measure M;
+
+            P.print();    // [Print] Mass: 10
+            M.measure(P); // [Measure] Charge: 1, Spin: 0
+            show(P);      // [Show] Charge: 1, Spin: 0
+            E.print();    // [Print] Mass: 2
+            M.measure(E); // [Measure] Charge: -1, Spin: 0
+            E.show();     // [Show] Charge: -1, Spin: 0.5
+            return 0;     // Ciao (2)   Bye (2)   Bye (10)
+        }
+        ```
+- Template
+    - Function overloading
+    - Function template
+        ```c
+        template <TYPE T>  // Data types: class, typename; Non-type: int, size_t, ...
+        T FUNCTION(T VAR1, T VAR2)
+        {
+            return VAR1 + VAR2;
+        }
+        ```
+    - Class template
+        ```c
+        template <TYPE T> // Data types: class, typename; Non-type: int, size_t, ...
+        class CLASS
+        {
+            public:
+                T FUNCTION(T VAR1, T VAR2){
+                    return VAR1 + VAR2;
+                }
+        }
+        ```
+    - Example
+        ```c
+        #include <iostream>
+        using namespace std; // to omit std::
+
+        template <class T>
+        class Cls
+        {
+            public:
+                T add(T a, T b){
+                    return a + b;
+                }
+        };
+
+        int main()
+        {
+            Cls<int> I;
+            Cls<double> D;
+            cout << I.add(1,2) << endl;      // 3
+            cout << D.add(1.2, 2.3) << endl; // 3.5
+        }
+        ```
+- Standard Template Library (STL)
+    - Iterators
+        - `ContainerTYPE::iterator IT_NAME;`
+    - Containers
+        - `vector` (dynamic array)
+            ```c
+            #include <vector>
+            // std::vector<TYPE> VEC_NAME;
+            std::vector<int> vec = {1, 2, 3};
+            ```
+            ```c
+            #include <vector>
+            using std::vector; // to omit std::
+            vector<int> vec = {1, 2, 3};
+            ```
+        - `list` (doubly linked list)
+            ```c
+            #include <list>
+            // std::list<TYPE> LS_NAME;
+            std::list<int> ls = {1, 2, 3};
+            ```
+        - `map` (key-value pairs)
+            ```c
+            #include <map>
+            // std::map<KEY_TYPE, VAL_TYPE> MAP_NAME;
+            std::map<char, int> dict;
+            dict['a'] = 64;
+            dict['b'] = 65;
+            dict['c'] = 66;
+            ```
+    - Algorithms (with `#include <algorithm>`)
+        - Find
+        - Count
+        - Search
+        - Merge
+        - Sort
+        - For_each
+        - Transform
+
 ## Libraries
 - `<unistd.h>`
     - `write(FILE_DESCRIPTOR, BUFFER, COUNT);`
@@ -404,8 +599,24 @@
     - `strcat(dest, src);`, `strncat(dest, src, size_t);`
     - `strchr(str, c);`
     - `strstr(string, str);`
+- `<iostream>` (for C++)
+    - `std::cout << "OUTPUT";`
+    - `std::cin >> INPUT;`
+    - `std::endl` (adds `\n` + flushes buffer)
+- `<string>` (for C++)
+    - Used for string class (object)
+- `<vector>`, `<list>`, `<map>` (for C++ STL containers)
+- `<algorithm>` (for C++ STL)
+    - `std::find(first, last, val);`
+    - `std::count(first, last, val);`
+    - `std::search(first1, last1, first2, last2);`
+    - `std::merge(first1, last1, first2, last2, result);`
+    - `std::sort(first, last);`
+    - `std::for_each(first, last, func);`
+    - `std::transform(first1, last1, result, func);`
 
 ## Resources
+- https://ideone.com/
 - https://www.onlinegdb.com/
 - https://pythontutor.com/index.html
 - https://valgrind.org/
@@ -415,3 +626,6 @@
 - https://homepage.ntu.edu.tw/~jfanc/AdvC.html
 - https://42wolfsburgberlin.notion.site/C-Mother-19d937251cae812a94b6c07937955c77
 - https://man7.org/index.html
+- http://www.cplusplus.com/reference/stl/
+- http://www.cplusplus.com/reference/algorithm/
+- https://stl.boost.org/
